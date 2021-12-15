@@ -1,0 +1,19 @@
+version: 1.0
+
+provider:
+  name: openfaas
+
+functions:
+  mirror-sync-gitlab:
+    lang: golang-http
+    build_args:
+      GO111MODULE: on
+    handler: ./mirror-sync-gitlab
+    image: mattermost/mirror-sync-gitlab:latest
+    secrets:
+      - gitlab-token
+      - github-header-token
+      - gitlab-host
+    environment:
+      combine_output: false
+      exec_timeout: "300s"
