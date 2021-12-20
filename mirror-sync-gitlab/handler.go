@@ -1,3 +1,6 @@
+// Copyright (c) 2015-present Mattermost, Inc. All Rights Reserved.
+// See LICENSE.txt for license information.
+
 package function
 
 import (
@@ -71,7 +74,7 @@ func Handle(req handler.Request) (handler.Response, error) {
 
 		projects, _, err := git.Projects.ListProjects(opt)
 		if err != nil {
-			return sendError(http.StatusInternalServerError, fmt.Errorf("X_Github_Event want: ['push'], got: "+eventType))
+			return sendError(http.StatusInternalServerError, fmt.Errorf("failed to list project %s: %v", repoName, err.Error()))
 		}
 
 		if len(projects) > 1 {
