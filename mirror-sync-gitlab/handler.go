@@ -66,6 +66,11 @@ func Handle(req handler.Request) (handler.Response, error) {
 		}
 
 		repoName := event.GetRepo().GetName()
+		// Quick fix after repo rename
+		if repoName == "mattermost" {
+			repoName = "mattermost-server"
+		}
+
 		opt := &gitlab.ListProjectsOptions{
 			// all mirrored projects are located in the namespace "mattermost/ci-only" for now if that change need to update here
 			Search:           gitlab.String(fmt.Sprintf("mattermost/ci-only/%s", repoName)),
