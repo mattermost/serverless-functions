@@ -8,6 +8,10 @@ functions:
     lang: golang-http
     build_args:
       GO111MODULE: on
+      TARGETPLATFORM: linux/amd64
+      BUILDPLATFORM: linux/amd64
+      TARGETOS: linux
+      TARGETARCH: amd64
     handler: ./mirror-sync-gitlab
     image: mattermost/mirror-sync-gitlab:latest
     secrets:
