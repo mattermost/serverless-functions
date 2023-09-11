@@ -1,6 +1,6 @@
 module github.com/mattermost/serverless-functions/mirror-sync-gitlab
 
-go 1.17
+go 1.20
 
 require (
 	github.com/alexellis/hmac/v2 v2.0.0
